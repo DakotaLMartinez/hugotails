@@ -1,0 +1,12 @@
+{{ define "main" }}
+<article class="px-4 container mx-auto sm:grid grid-cols-4 mt-4">
+  <aside class="toc text-xs sm:fixed col-span-4 sm:left-2 sm:break-words sm:w-1/4">
+    <h4>Table of Contents</h4>
+    {{- partial "github.html" . -}}
+    {{ .TableOfContents }}
+  </aside>
+  <section class="sm:col-span-3 sm:col-start-2">
+    {{ .Content }}
+  </section>
+</article>
+{{ end }}

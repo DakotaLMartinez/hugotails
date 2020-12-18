@@ -1,0 +1,14 @@
+<head>
+  {{ $styles := resources.Get "css/styles.scss" | toCSS | postCSS (dict "config" "./assets/css/postcss.config.js") }}
+  {{ $syntax := resources.Get "css/syntax.css" | postCSS (dict "config" "./assets/css/postcss.config.js") }}
+
+  {{ if .Site.IsServer }}
+  <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
+  <link rel="stylesheet" href="{{ $syntax.RelPermalink }}">
+  {{ else }}
+  {{ $styles := $styles | minify | fingerprint | resources.PostProcess }}
+  {{ $syntax := $syntax | minify | fingerprint | resources.PostProcess }}
+  <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}">
+  <link rel="stylesheet" href="{{ $syntax.Permalink }}" integrity="{{ $styles.Data.Integrity }}">
+  {{ end }}
+</head>
