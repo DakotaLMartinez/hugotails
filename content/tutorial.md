@@ -2,7 +2,7 @@
 title: "Tutorial"
 date: 2020-12-12T17:38:00-08:00
 draft: true
-github_repo: 
+github_repo: "https://github.com/DakotaLMartinez/hugotails"
 ---
 
 # Setting up TailwindCSS with PostCSS in Hugo
